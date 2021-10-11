@@ -3,6 +3,7 @@ const path = require("path");
 const files = require("./findFiles.js")
 const links = require("./findLinks.js")
 const validateAll = require("./validate.js")
+const stats = require("./stats.js")
 
 //let arrayFiles = files.findFiles("C:/Users/ISABEL-PC/Desktop/Laboratoria/CDMX011-md-links/pruebas");
 //let arrayFiles = files.findFiles("C:/Users/ISABEL-PC/Desktop/Laboratoria/CDMX011-md-links/README.md");
@@ -16,7 +17,7 @@ let arrayLinks = links.findLinks(arrayFiles);
  
 
 validateAll.validateAll(arrayLinks).then(res => {
-    console.log(res)
+    console.log(stats.stats(res))
     res.forEach(elem => console.log(elem))
 });
 

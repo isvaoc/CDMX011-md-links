@@ -35,30 +35,61 @@
         message: 'fail'
     }
 ]*/
+/*let arrayCompleto = [
+    {
+        href: 'https://es.wikipedia.org/wiki/Markdown',
+        text: 'Markdown',
+        file: 'readme0.md'
+    },
+    {
+        href: 'https://nodejs.org/',
+        text: 'Node.js',
+        file: 'readme0.md'
+    },
+    {
+        href: 'https://nodejs.org/',
+        text: 'Node.js',
+        file: 'readme0.md'
+    },
+    {
+        href: 'https://developers.google.com/v8/',
+        text: 'motor de JavaScript V8 de Chrome',
+        file: 'readme0.md'
+    },
+    {
+        href: 'https://isvaoc.github.io/',
+        text: 'github isa',
+        file: 'readme0.md'
+    }
+]*/
 
-function stats(arrayCompleto){
-    let links = [];
+function stats(array){
     let broken = [];
-    arrayCompleto.forEach(elem => {
-        links.push(elem.href);
+    let links = array.map(elem => {
         if (elem.status == 404){
             broken.push(elem.status)
         }
-    })
-    let newLinks = links.sort()
-    let unique = []
-    for (let i = 0; i < newLinks.length; i++){
-        if (newLinks[i] != newLinks[i+1]){
-            unique.push(newLinks[i])
+        return elem.href
+    }).sort();
+
+    let unique = [];
+    for (let i = 0; i < links.length; i++){
+        if (links[i] != links[i+1]){
+            unique.push(links[i])
         }
     }
-
+    
     let result = {
-        'Total': arrayCompleto.length,
+        'Total': array.length,
         'Unique': unique.length,
         'Broken': broken.length
     }
+
+    if (Object.keys(array[1]).length != 5) {
+        delete result.Broken
+    }
+
     return result
 }
-
+//console.log(stats(arrayCompleto))
 exports.stats = stats

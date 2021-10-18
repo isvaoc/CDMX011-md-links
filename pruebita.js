@@ -1,10 +1,23 @@
-const axios = require('axios');
-let obj ={}
-axios.get('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY')
-  .then(response => {
-    console.log(response.statusCode);
-    obj.prueba = response.statusCode
-  })
-  .catch(error => {
-    console.log(error);
-  });
+const fs = require("fs");
+const path = require("path");
+const files = require("./findFiles.js")
+const links = require("./findLinks.js")
+const validateAll = require("./validate.js")
+const stats = require("./stats.js")
+
+let arrayFiles = files.findFiles("C:/Users/ISABEL-PC/Desktop/Laboratoria/CDMX011-md-links/pruebas");
+//let arrayFiles = files.findFiles("C:/Users/ISABEL-PC/Desktop/Laboratoria/CDMX011-md-links/README.md");
+//let arrayFiles = files.findFiles("C:/Users/ISABEL-PC/Desktop/Laboratoria/CDMX011-md-links/pruebas/readme0.md");
+//console.log(arrayFiles)
+
+let arrayLinks = links.findLinks(arrayFiles);
+//console.log(arrayLinks)
+//console.log(arrayLinks.length)
+
+ 
+
+validateAll.validateAll(arrayLinks).then(res => {
+    console.log(res)
+    console.log(stats.stats(res))
+    //res.forEach(elem => console.log(elem))
+});

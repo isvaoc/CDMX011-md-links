@@ -13,7 +13,7 @@ function findLinks(arrayPaths) {
             let link = a.href;
             if (!link.startsWith('about:blank#')) {
                 let texto = a.textContent;
-                let archivo = path.basename(elem);
+                let archivo = path.resolve(elem);
                 arrayLinks.push({ href: link, text: texto, file: archivo })
             };
         });

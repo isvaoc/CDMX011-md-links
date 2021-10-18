@@ -34,19 +34,19 @@ async function validate(objLink) {
     .catch((error) => {
         const objCompleted = {
             ...objLink,
-            'status': response.status,
+            'status': error.response.status,
             'message': 'fail'
         }
         return objCompleted
     })
 };
 
-function validateAll(arrayLinks){
+/*function validateAll(arrayLinks){
     return new Promise((resolve, reject ) => {
         let arrlink = arrayLinks.map(elem => validate(elem))
         resolve(Promise.all(arrlink))
     })
-}
+}*/
 
 /*validateAll(arrayLinks)
 .then((res) => {
@@ -54,4 +54,5 @@ function validateAll(arrayLinks){
 })*/
 
 
-exports.validateAll = validateAll
+//exports.validateAll = validateAll
+exports.validate = validate

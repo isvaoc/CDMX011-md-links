@@ -2,13 +2,13 @@ const fs = require("fs");
 const files = require("./findFiles.js")
 const links = require("./findLinks.js")
 const validate = require("./validate.js")
-//const stats = require("./stats.js");
+const stats = require("./stats.js");
 
 //let pathFiles = "C:/Users/ISABEL-PC/Desktop/Laboratoria/CDMX011-md-links/README.md";
 //let pathFiles = "C:/Users/ISABEL-PC/Desktop/Laboratoria/CDMX011-md-links/pruebas/readme0.md";
 let pathFiles = "C:/Users/ISABEL-PC/Desktop/Laboratoria/CDMX011-md-links/pruebas"
 let options = {
-  validate: true
+  validate: false
 }
 
 const mdLinks = (pathFiles, options) => {
@@ -32,7 +32,10 @@ const mdLinks = (pathFiles, options) => {
 }
 
 mdLinks(pathFiles, options)
-.then((res) => console.log(res))
+.then((res) => {
+  console.log(res);
+  console.log(stats.stats(res))
+})
 .catch((error) => console.log(error))
 
 

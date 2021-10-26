@@ -3,8 +3,8 @@ const chalk = require('chalk');
 const figlet = require('figlet');
 const yargs = require('yargs');
 const fs = require("fs");
-const mdLinks = require("../index.js");
-const stats = require("../stats.js");
+const mdLinks = require("../comp/mdLinks.js");
+const stats = require("../comp/stats.js");
 
 console.log(' ')
 console.log(chalk.black.bgMagentaBright('                          Welcome to the library...                          '))

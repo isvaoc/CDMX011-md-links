@@ -1,23 +1,38 @@
+
+
+console.log(findFiles('./.md'))
+console.log(findFiles('./pruebas/'))
+
 const fs = require("fs");
 const path = require("path");
-const files = require("./findFiles.js")
-const links = require("./findLinks.js")
-const validateAll = require("./validate.js")
-const stats = require("./stats.js")
 
-let arrayFiles = files.findFiles("C:/Users/ISABEL-PC/Desktop/Laboratoria/CDMX011-md-links/pruebas");
-//let arrayFiles = files.findFiles("C:/Users/ISABEL-PC/Desktop/Laboratoria/CDMX011-md-links/README.md");
-//let arrayFiles = files.findFiles("C:/Users/ISABEL-PC/Desktop/Laboratoria/CDMX011-md-links/pruebas/readme0.md");
-//console.log(arrayFiles)
+let arrayPaths = []
+function findFiles(ruta) {
+  const abs = path.resolve(ruta);
+  if (path.extname(abs).length == 0 && !path.basename(abs).startsWith('.')) {
+    let list = fs.readdirSync(abs);
+    list.forEach((file) => {
+      if (path.extname(file).length == 0) {
+        let rutita = path.join(abs, file);
+        findFiles(rutita);
+      } else {
+        let rutita = path.join(abs, file);
+        if (path.extname(file) == '.md' || path.extname(file).toLowerCase() == '.markdown') {
+          arrayPaths.push(rutita);
+        }
+      }
+    });
+    return arrayPaths;
+  } else if (path.extname(abs).length == 0 && path.basename(abs).startsWith('.md')){
+    arrayPaths.push(abs);
+    return arrayPaths;
+  } else if (path.extname(abs) == '.md'){
+    arrayPaths.push(abs);
+    return arrayPaths;
+  } else if (path.extname(abs).length == 0 && path.basename(abs).startsWith('.')) {
+    return [];
+  } else {
+    return [];
+  }
+}
 
-let arrayLinks = links.findLinks(arrayFiles);
-//console.log(arrayLinks)
-//console.log(arrayLinks.length)
-
- 
-
-validateAll.validateAll(arrayLinks).then(res => {
-    console.log(res)
-    console.log(stats.stats(res))
-    //res.forEach(elem => console.log(elem))
-});

@@ -2,14 +2,14 @@
   "name": "md-links",
   "version": "1.0.0",
   "description": "md-links @ Laboratoria",
-  "main": "index.js",
+  "main": "./bin/cli.js",
   "keywords": [
     "nodejs",
     "jest"
   ],
   "license": "MIT",
   "scripts": {
-    "eslint": "eslint --ext .js src/ test/",
+    "eslint": "eslint --ext .js comp/ bin/ test/",
     "pretest": "npm run eslint",
     "test": "jest /test --coverage"
   },

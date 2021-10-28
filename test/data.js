@@ -18,6 +18,20 @@ const objLink404 = {
     file: 'readme0.md'
 }
 
+const objLinkDep = {
+  href: 'https://www.drauta.com/que-es-nodejs-y-para-que-sirve',
+  text: '¿Qué es Node.js y para qué sirve? - drauta.com',
+  file: 'C:\\Users\\ISABEL-PC\\Desktop\\Laboratoria\\CDMX011-md-links\\README.md'
+}
+
+const resDep = {
+  href: 'https://www.drauta.com/que-es-nodejs-y-para-que-sirve',
+  text: '¿Qué es Node.js y para qué sirve? - drauta.com',
+  file: 'C:\\Users\\ISABEL-PC\\Desktop\\Laboratoria\\CDMX011-md-links\\README.md',
+  status: 'deprecated',
+  message: 'fail'
+}
+
 const arrayValidated = [
     {
         href: 'https://es.wikipedia.org/wiki/Markdown',
@@ -191,4 +205,4 @@ const arrayMdLinksSimple = [
 
 
 
-module.exports = { filesData, arrayValidated, arraySimple, resultArrayValidated, resultArraySimple, resultLinks, objLink200, objLink404, arrayMdLinks, arrayMdLinksSimple, filesMd }
+module.exports = { filesData, arrayValidated, arraySimple, resultArrayValidated, resultArraySimple, resultLinks, objLink200, objLink404, arrayMdLinks, arrayMdLinksSimple, filesMd, resDep, objLinkDep }

@@ -1,5 +1,6 @@
 const axios = require("axios")
 
+
 function validate(objLink) {
     return axios.get(objLink.href)
     .then((response) => {
@@ -13,12 +14,21 @@ function validate(objLink) {
         }
     })
     .catch((error) => {
-        const objCompleted = {
-            ...objLink,
-            'status': error.response.status,
-            'message': 'fail'
+        if (error.response) {
+            const objCompleted = {
+                ...objLink,
+                'status': error.response.status,
+                'message': 'fail'
+            }
+            return objCompleted
+        } else {
+            const objCompleted = {
+                ...objLink,
+                'status': 'deprecated',
+                'message': 'fail'
+            }
+            return objCompleted
         }
-        return objCompleted
     })
 };
 

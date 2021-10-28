@@ -65,6 +65,12 @@ describe('Validate', () => {
       expect(res).toEqual(data.arrayValidated[4]);
     });
   });
+
+  test('should return an object with the status deprecated', () => {
+    return validate.validate(data.objLinkDep).catch(res => {
+      expect(res).toEqual(data.resDep);
+    });
+  });
 });
 
 

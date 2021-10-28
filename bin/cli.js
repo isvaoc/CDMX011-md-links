@@ -55,11 +55,11 @@ if (process.argv[2]==undefined || !fs.existsSync(process.argv[2])){
                 const link = chalk.cyan(elem.href)
                 let status = ""
                 let message = ""
-                if (elem.status == 404){
+                if (elem.status == 404 || elem.status == 'deprecated'){
                     status = chalk.redBright(elem.status)
                     message = chalk.white.bgRed(' ' + elem.message + ' ')
                 } 
-                if (elem.status != 404 && elem.status != undefined){
+                if (elem.status != 404 && elem.status != undefined && elem.status != 'deprecated'){
                     status = chalk.yellowBright(elem.status)
                     message = chalk.black.bgGreen(' ' + elem.message + ' ')
                 }

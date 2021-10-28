@@ -1,26 +1,8 @@
 const axios = require("axios")
 
-/*let objLink = {
-    href: 'https://es.wikipedia.org/wiki/Markdown',
-    text: 'Markdown',
-    file: 'readme0.md'
-}*/
 
-/*const arrayLinks = [
-    {
-        href: 'https://es.wikipedia.org/wiki/Markdown',
-        text: 'Markdown',
-        file: 'readme0.md'
-    },
-    {
-        href: 'https://es.wikipedia.org/wiki/Markdown',
-        text: 'Markdown',
-        file: 'readme0.md'
-    }
-]*/
-
-async function validate(objLink) {
-    return await axios.get(objLink.href)
+function validate(objLink) {
+    return axios.get(objLink.href)
     .then((response) => {
         if (response.status >= 200 || response.status < 400){
             const objCompleted = {
@@ -32,12 +14,21 @@ async function validate(objLink) {
         }
     })
     .catch((error) => {
-        const objCompleted = {
-            ...objLink,
-            'status': error.response.status,
-            'message': 'fail'
+        if (error.response) {
+            const objCompleted = {
+                ...objLink,
+                'status': error.response.status,
+                'message': 'fail'
+            }
+            return objCompleted
+        } else {
+            const objCompleted = {
+                ...objLink,
+                'status': 'deprecated',
+                'message': 'fail'
+            }
+            return objCompleted
         }
-        return objCompleted
     })
 };
 

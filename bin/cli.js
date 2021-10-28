@@ -3,8 +3,8 @@ const chalk = require('chalk');
 const figlet = require('figlet');
 const yargs = require('yargs');
 const fs = require("fs");
-const mdLinks = require("../index.js");
-const stats = require("../stats.js");
+const mdLinks = require("../comp/mdLinks.js");
+const stats = require("../comp/stats.js");
 
 console.log(' ')
 console.log(chalk.black.bgMagentaBright('                          Welcome to the library...                          '))
@@ -55,11 +55,11 @@ if (process.argv[2]==undefined || !fs.existsSync(process.argv[2])){
                 const link = chalk.cyan(elem.href)
                 let status = ""
                 let message = ""
-                if (elem.status == 404){
+                if (elem.status == 404 || elem.status == 'deprecated'){
                     status = chalk.redBright(elem.status)
                     message = chalk.white.bgRed(' ' + elem.message + ' ')
                 } 
-                if (elem.status != 404 && elem.status != undefined){
+                if (elem.status != 404 && elem.status != undefined && elem.status != 'deprecated'){
                     status = chalk.yellowBright(elem.status)
                     message = chalk.black.bgGreen(' ' + elem.message + ' ')
                 }

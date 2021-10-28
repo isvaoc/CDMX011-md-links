@@ -4,8 +4,9 @@ const marked = require("marked");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
-let arrayLinks = []
+
 function findLinks(arrayPaths) {
+    let arrayLinks = []
     arrayPaths.forEach((elem) => {
         let data = fs.readFileSync(elem, 'utf8');
         const dom = new JSDOM(marked(data));

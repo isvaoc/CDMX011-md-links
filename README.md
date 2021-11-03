@@ -25,7 +25,7 @@ le añadirá el número total de links con status 404.
 Tal vez resulte un poco difícil de entenderlo leyéndolo, por eso hice un diagrama de flujo que permite 
 visualizar más gráficamente el proceso que lleva a cabo la librería MD Links.
 
-![md-links](C:\Users\ISABEL-PC\Desktop\Laboratoria\CDMX011-md-links\mdlinks.png)
+![mdlinks](https://user-images.githubusercontent.com/74514413/140080817-95db6ba5-ef07-4099-8289-0b41586234c9.png)
 
 Cabe mencionar que para hacer este diagrama, tenía una cantidad limitada de figuras entonces tuve que resumir algunos pasos.
 
